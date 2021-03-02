@@ -1,9 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Avatar } from '@material-ui/core';
+import { AccessTime } from '@material-ui/icons';
 function Header() {
   return (
     <HeaderContainer>
-      <h1>Header</h1>
+      {/* Header Left */}
+      <HeaderLeft>
+        <HeaderAvatar
+        // Todo add onclick
+        />
+        <AccessTime />
+      </HeaderLeft>
+      {/* Header Search */}
+      {/* Header Right */}
     </HeaderContainer>
   );
 }
@@ -11,6 +21,19 @@ function Header() {
 export default Header;
 
 const HeaderContainer = styled.div`
-  color: white;
-  background-color: red;
+  color: black;
+  display: flex;
 `;
+
+const HeaderLeft = styled.div`
+  flex: 0.3;
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+
+  > .MuiSvgIcon-root {
+    margin-left: auto;
+    margin-right: 30px;
+  }
+`;
+const HeaderAvatar = styled(Avatar)``;
