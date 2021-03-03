@@ -1,6 +1,7 @@
-import { Create, FiberManualRecord } from '@material-ui/icons';
+import { Add, Apps, BookmarkBorder, Create, DraftsOutlined, ExpandLess, ExpandMore, FiberManualRecord, FileCopyOutlined, InboxOutlined, InsertComment, PeopleAlt } from '@material-ui/icons';
 import React from 'react';
 import styled from 'styled-components';
+import SidebarOption from './SidebarOption';
 
 function Sidebar() {
   return (
@@ -8,6 +9,7 @@ function Sidebar() {
       <SidebarHeader>
         <SidebarInfo>
           <h2>Papa Fam HQ</h2>
+          
           <h3>
             <FiberManualRecord />
             Mouhamadou
@@ -15,6 +17,19 @@ function Sidebar() {
         </SidebarInfo>
         <Create />
       </SidebarHeader>
+      <SidebarOption Icon={InsertComment} title="Threads"/>
+      <SidebarOption Icon={InboxOutlined} title="Mentions & reactions"/>
+      <SidebarOption Icon={DraftsOutlined} title="Saved items"/>
+      <SidebarOption Icon={BookmarkBorder} title="Channel browser"/>
+      <SidebarOption Icon={PeopleAlt} title="People & user groups"/>
+      <SidebarOption Icon={Apps} title="Apps"/>
+      <SidebarOption Icon={FileCopyOutlined} title="File browser"/>
+      <SidebarOption Icon={ExpandLess} title="Show less"/>
+      <hr />
+      <SidebarOption Icon={ExpandMore} title="Channels"/>
+        <hr/>
+        <SidebarOption Icon={Add} title="Add Channel"/>
+
     </SidebarContainer>
   );
 }
@@ -24,6 +39,12 @@ const SidebarContainer = styled.div`
   background-color: var(--slack-color);
   flex: 0.3;
   margin-top: 60px;
+
+  > hr {
+    margin-top: 10px; 
+    margin-bottom: 10px; 
+    border: 1px solid #49274b;
+  }
 `;
 const SidebarHeader = styled.div`
   display: flex;
