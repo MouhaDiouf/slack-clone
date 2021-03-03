@@ -1,11 +1,12 @@
 import React from 'react';
 import logo from './logo.svg';
-import { Counter } from './features/counterSlice';
+// import { Counter } from './features/counterSlice';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Header from './Header';
 import styled from 'styled-components';
 import Sidebar from './Sidebar';
+import Chat from './Chat';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Switch>
             <Route exact path="/">
               {/* Chat */}
+              <Chat />
             </Route>
           </Switch>
         </AppBody>

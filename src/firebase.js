@@ -21,3 +21,7 @@ const auth = firebaseApp.auth();
 
 //this is for the provider for the google authentication (popup)
 const provider = new firebase.auth.GoogleAuthProvider();
+
+
+// exporting the different elements to have access to them from anywhere
+export {db, auth, provider};
