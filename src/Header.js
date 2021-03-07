@@ -1,15 +1,22 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Avatar } from '@material-ui/core';
-import { AccessTime, HelpOutline } from '@material-ui/icons';
-import SearchIcon from '@material-ui/icons/Search';
+import React from "react";
+import styled from "styled-components";
+import { Avatar } from "@material-ui/core";
+import { AccessTime, HelpOutline } from "@material-ui/icons";
+import SearchIcon from "@material-ui/icons/Search";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "./firebase";
 function Header() {
+  const [user] = useAuthState(auth);
+  console.log(user?.photoURL);
   return (
     <HeaderContainer>
       {/* Header Left */}
       <HeaderLeft>
         <HeaderAvatar
-        // Todo add onclick
+          onClick={() => auth.signOut()}
+          // Todo add onclick
+          src={user?.photoURL}
+          alt={user?.displayName}
         />
         <AccessTime />
       </HeaderLeft>
