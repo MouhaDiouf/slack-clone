@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { db } from "./firebase";
 import firebase from "firebase";
 
-function ChatInput({ channelName, channelId }) {
+function ChatInput({ channelName, channelId, chatRef }) {
   const [input, setinput] = useState("");
   const sendMessage = (e) => {
     e.preventDefault(); //prevents refresh
@@ -12,11 +12,14 @@ function ChatInput({ channelName, channelId }) {
 
     db.collection("rooms").doc(channelId).collection("messages").add({
       message: input,
-      timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       userImage:
         "https://avatars.githubusercontent.com/u/36282653?s=460&u=0c740afe13d64bc087991ecc513e72ca2ff213c2&v=4",
     });
     setinput("");
+    chatRef.current.scrollIntoView({
+      behavior: "smooth",
+    });
   };
   return (
     <ChatInputContainer>
@@ -24,7 +27,7 @@ function ChatInput({ channelName, channelId }) {
         <input
           value={input}
           type="text"
-          placeholder={`Message #ROOM`}
+          placeholder={`Message #${channelName}`}
           onChange={(e) => setinput(e.target.value)}
         />
         <Button hidden type="submit" onClick={sendMessage}>
